@@ -43,8 +43,4 @@ def update_graph():
 
 
 if __name__ == '__main__':
-<<<<<<< HEAD:app_analyst.py
     app.run(debug=True)
-=======
-    app.run(debug=True)
->>>>>>> 1b18c5c2a3b8dd626b5d501d9806b4e90c65e781:source/app_analyst.py
