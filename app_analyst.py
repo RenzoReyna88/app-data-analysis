@@ -12,9 +12,9 @@ cant_part= [21, 37, 30, 15, 3]
 
 df= pd.DataFrame({"Edad":edad_part, "Número de participantes":cant_part})
 
-app_dash = Dash(__name__)
+app = Dash(__name__)
 
-server= app_dash.server
+server= app.server
 
 fig = px.bar(df, x=df['Edad'], y=df['Número de participantes'], color='Edad')
 
@@ -23,7 +23,7 @@ fig.update_layout(plot_bgcolor='#999999',
                   font_color='#222222'
                  )
 
-app_dash.layout= html.Div(children=[
+app.layout= html.Div(children=[
                           html.H1(children='Estudio económico en Sarmiento', style={'textAlign':'center'}),
 
                           html.P(children='hola mundo quiero trabajar por favor'),
@@ -43,4 +43,4 @@ def update_graph():
 
 
 if __name__ == '__main__':
-    app_dash.run(debug=True)
+    app.run(debug=True)
