@@ -35,7 +35,7 @@ app.layout= html.Div(children=[
 
 
 def update_graph():
-    return px.bar(x=df['Edad'], y=df['Profesión'])
+    return px.bar(x=df['Edad'], y=df['Número de participantes'])
 
 
 
