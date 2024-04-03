@@ -25,8 +25,4 @@ typing_extensions==4.10.0
 urllib3==2.2.1
 Werkzeug==3.0.2
 zipp==3.18.1
-<<<<<<< HEAD
 gunicorn
-=======
-gunicorn
->>>>>>> 3f88c8990def40096ab6c7bf89bdff9abe5b3095
