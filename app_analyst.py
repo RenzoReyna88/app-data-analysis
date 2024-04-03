@@ -39,11 +39,8 @@ app.layout= html.Div(children=[
                               ]
                     )
 
-fig.update_layout(title=dict(text='Número de participantes según su edad',
-                             y=0.93, xanchor="right", x=0.6, 
-                             font_family="Arial"),
-                  legend=dict(y=0.9,x=1.0, bgcolor="white",
-                             font_family="Arial"),
+fig.update_layout(title=dict(text='Número de participantes según su edad'),
+                  legend=dict(y=0.9,x=1.0, bgcolor="white"),
                   plot_bgcolor='#d9d9d9',
                   paper_bgcolor='#d9d9d9',
                   font_color='#333333'
