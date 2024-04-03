@@ -26,9 +26,7 @@ fig.update_layout(plot_bgcolor='#999999',
 app.layout= html.Div(children=[
                           html.H1(children='Estudio económico en Sarmiento', style={'textAlign':'center'}),
 
-                          html.P(children='hola mundo quiero trabajar por favor'),
-
-                          html.Div(children='''Plotly'''),
+                          html.P(children='Informe final'),
 
                           dcc.Graph(id='example-graph',
                                     figure=fig
