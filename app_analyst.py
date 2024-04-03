@@ -10,35 +10,47 @@ edad_part = ('Entre 16 y 18 años', 'Entre 24 y 35 años', 'entre 35 y 45 años'
 
 cant_part= [21, 37, 30, 15, 3]
 
-df= pd.DataFrame({"Edad":edad_part, "Número de participantes":cant_part})
+df= pd.DataFrame({"Rango de edades":edad_part, "Número de participantes":cant_part})
 
 app = Dash(__name__)
 
 server= app.server
 
-fig = px.bar(df, x=df['Edad'], y=df['Número de participantes'], color='Edad')
 
-fig.update_layout(plot_bgcolor='#999999',
-                  paper_bgcolor='#999999',
-                  font_color='#222222'
-                 )
+colors_bar= ['#001F49', '#CB0000', '#006B37', '#5200F4', '#FF6100']
+
+
+
+
+fig = px.bar(df, x=df['Rango de edades'], y=df['Número de participantes'], color='Rango de edades')
+
 
 app.layout= html.Div(children=[
-                          html.H1(children='Estudio económico en Sarmiento', style={'textAlign':'center'}),
+                               html.H1(children='Estudio económico en Sarmiento (Informe final)', style={'textAlign':'center'}),
 
-                          html.P(children='Informe final'),
+                               html.P(children='Aquí el Resumen de todo la investigación', 
+                                      style={'textAlign':'center'}),
 
-                          dcc.Graph(id='example-graph',
-                                    figure=fig
-                                    )
-                         ])
+                                html.Br(),
 
+                                dcc.Graph(id='example-graph',
+                                        figure=fig
+                                       )
+                              ]
+                    )
 
-def update_graph():
-    return px.bar(x=df['Edad'], y=df['Número de participantes'])
+fig.update_layout(title=dict(text='Número de participantes según su edad',
+                             yanchor="top", y=0.93, xanchor="right", x=0.6, 
+                             font_family="Arial"),
+                  legend=dict(y=0.9,x=1.0, bgcolor="white",
+                             font_family="Arial"),
+                  plot_bgcolor='#d9d9d9',
+                  paper_bgcolor='#d9d9d9',
+                  font_color='#333333'
+                 )
 
 
 
 
 if __name__ == '__main__':
-    app.run(debug=False)
+    app.run(debug=True)
