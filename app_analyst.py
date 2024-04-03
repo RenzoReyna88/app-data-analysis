@@ -40,7 +40,7 @@ app.layout= html.Div(children=[
                     )
 
 fig.update_layout(title=dict(text='Número de participantes según su edad',
-                             yanchor="top", y=0.93, xanchor="right", x=0.6, 
+                             y=0.93, xanchor="right", x=0.6, 
                              font_family="Arial"),
                   legend=dict(y=0.9,x=1.0, bgcolor="white",
                              font_family="Arial"),
