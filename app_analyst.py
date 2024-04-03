@@ -14,6 +14,8 @@ df= pd.DataFrame({"Edad":edad_part, "Número de participantes":cant_part})
 
 app = Dash(__name__)
 
+server= app.server
+
 fig = px.bar(df, x=df['Edad'], y=df['Número de participantes'], color='Edad')
 
 fig.update_layout(plot_bgcolor='#999999',
