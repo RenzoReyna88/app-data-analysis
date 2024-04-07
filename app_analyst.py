@@ -19,7 +19,7 @@ resp_sueldo= pd.read_csv("datos/sueldo.csv", sep=',')
 
 df_int_soc= pd.read_csv("datos/df_int_soc.csv", sep=',')
 
-ddf= pd.read_csv("datos_encuestados.csv", sep=',')
+ddf= pd.read_csv("datos/datos_encuestados.csv", sep=',')
 ddff= ddf.head(6)
 
 
@@ -88,9 +88,9 @@ app.layout= dbc.Container([
                                 
                                                        html.P(children=["""Este informe resume los hallazgos del estudio económico realizado en la localidad de Sarmiento, pueblo ubicado en el departamento Totoral, 
                                                                         provincia de Córdoba. En esta investigación se analizaron las respuestas a 15 preguntas de opción múltiple choise. 
-                                                                        En el estudio participaron 105 personas aportando una mirada critica sobre las condiciones socioeconómica en la localidad. Es impportante tener en cuenta
-                                                                        qué esta investigación permite evaluar las condiciones de la población, y más importante aun, permite identificar las necesidades de cada sector o área y 
-                                                                        mejorar la toma de decisiones, el desarrollo y la innovación de esta hermosa Localidad."""],                                      
+                                                                        En el estudio participaron 105 personas aportando una mirada critica sobre las condiciones socioeconómica en la localidad. Es inherente tener en cuenta
+                                                                        qué esta investigación permite evaluar las condiciones de la población, y aun más importante, permite identificar las necesidades de cada sector o área, 
+                                                                        mejorar la toma de decisiones, el desarrollo y la innovación de la Localidad."""],                                      
                                                                         style={'textAlign':'left'}),
 
                                                        html.Br(),
@@ -219,11 +219,11 @@ app.layout= dbc.Container([
                                                        html.P(children=['''Mi nombre es Renzo Reyna. Soy un autodidacta con un fervoroso deseo hacia el conocimiento 
                                                                         tecnológico y la ciencia de datos.'''
                                                        ], style={'font-weight': 'bold', 'margin-top': '20px', 'textAlign':'start'}),
-                                                       html.P(children=['''Llevo 6 años estudiando economia, comportamiento de mercado e inserción de la tecnología en 
-                                                                    el ámbito social. En Los ultimos 2 años incursione en el mundo de la programación Python y el 
+                                                       html.P(children=['''Llevo 6 años estudiando economia, el comportamiento de mercado e inserción de la tecnología en 
+                                                                    el ámbito social. En Los ultimos 2 años incursioné en el mundo de la programación Python y el 
                                                                     analisis de datos. Desde entonces, me he dedicado a comprender en profundidad estas tecnologías 
-                                                                    y a cómo aplicarlas a nuestras activades con el fin de mejorar nuestro ambiente de Trabajo
-                                                                    y cada proceso que llevemos adelante en la vida a diario.'''])    
+                                                                    y a cómo aplicarlas a nuestras activades, con el fin de mejorar nuestro ambiente de Trabajo
+                                                                    y cada proceso que llevemos adelante en la vida diaria.'''])    
                                                                                                                                                   
                                              ])                                                    
                                     ], width=6),
