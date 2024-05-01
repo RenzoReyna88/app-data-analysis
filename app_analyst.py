@@ -42,8 +42,9 @@ fig_edades.update_layout(title=dict(text='Participantes según su edad', y=0.92)
                          paper_bgcolor='#0C2547',
                          font_color='white',
 
-                         legend=dict(
-                                            font_size=9)
+                         legend=dict(font_size=9),
+                         yaxis_tickfont=dict(size=9),
+                         xaxis_tickfont=dict(size=9)                         
                         )
 
 # Figura n° 2 gráfico de barras
@@ -59,9 +60,12 @@ fig_sueldo_aprox.update_layout(title=dict(text='Promedio ingresos mensuales', y=
                                plot_bgcolor='#0C2547',
                                paper_bgcolor='#0C2547',
                                font_color='white',
+                               font_size=12,
                                legend=dict(
-                                          font_size=9,
-                                          y= 0.72)
+                                          font_size=6,
+                                          y= 0.72),
+                               yaxis_tickfont=dict(size=9),
+                               xaxis_tickfont=dict(size=9)                                          
                               )
 
 # Figura n° 3 gráfico circular
@@ -75,34 +79,36 @@ fig_int_soc.update_layout(title_text="Intención social cómo representante púb
                           uniformtext_mode='hide',
                           paper_bgcolor= '#0C2547',
                           font_color='white',
+                          font_size=12,
 
                           legend=dict(
                                       title=('Respuestas'),
                                       x=0.95,  
                                       y=1.1,  
                                       orientation='v',
-                                      font_size=9
-                                     )
+                                      font_size=6
+                          ),
                           )
 
 
 # Figura n° 4 gráfico de dispersión
 fig_estudios = px.scatter(ddf, x=ddf['Nivel de estudios'], y=ddf['Profesión'], color='Nivel de estudios',
                           )
-fig_estudios.update_layout(title=dict(text='Profesión vs Estudios', y=0.92),
+fig_estudios.update_layout(title=dict(text='Profesión vs nivel de Estudios', y=0.92),
                            plot_bgcolor='#0C2547',
                            paper_bgcolor='#0C2547',
                            font_color='white',
-                           font_size=10,
+                           font_size=12,
 
                            legend=dict(
                                        x=1.1,  
                                        y=0.72, 
                                        orientation='v',
-                                       font_size=9
-                                      ),
-                            yaxis_title_font=dict(size=12),
-                            xaxis_title_font=dict(size=12)
+                                       font_size=6
+                           ),
+
+                            yaxis_tickfont=dict(size=9),
+                            xaxis_tickfont=dict(size=9)
                            )
 
 # Figura n° 5 Mapa de calor
@@ -114,8 +120,8 @@ fig_corr_variables.update_layout(title=dict(text='Correlación entre las respues
                                  xaxis_title= 'Eje x',
                                  yaxis_title= 'Eje y',
                                  font=dict(size=12, color='white'),
-                                 yaxis_tickfont=dict(size=9, color='white'),
-                                 xaxis_tickfont=dict(size=9, color='white'),
+                                 yaxis_tickfont=dict(size=8.1, color='white'),
+                                 xaxis_tickfont=dict(size=8.1, color='white'),
                                  paper_bgcolor= '#0C2547'
                                 )
 
@@ -137,9 +143,9 @@ app.layout= dbc.Container([
                                                             style={"textDecoration": "none"}
                                                     ),
                                                     dbc.Nav([
-                                                            dbc.NavItem(dbc.NavLink(html.Img(src='/assets/INSTAGRAM_icon.png', width="18px", height="18px"), href="https://www.instagram.com/desarrollador.sarmientino/?hl=es")),
                                                             dbc.NavItem(dbc.NavLink(html.Img(src='/assets/FACEBOOK_icon.png', width="18px", height="18px"), href="https://www.facebook.com/desarrollador.sarmientino")),
                                                             dbc.NavItem(dbc.NavLink(html.Img(src='/assets/SUBSTACK_icon.png', width="18px", height="18px"), href="https://substack.com/@renzoreynahttps://substack.com/@renzoreyna")),
+                                                            dbc.NavItem(dbc.NavLink(html.Img(src='/assets/INSTAGRAM_icon.png', width="18px", height="18px"), href="https://www.instagram.com/desarrollador.sarmientino/?hl=es")),
                                                             dbc.NavItem(dbc.NavLink(html.Img(src='assets/LINKEDIN_icon.png', width="18px", height="18px"), href="https://www.linkedin.com/in/renzo-reyna/")),
                                                             dbc.NavItem(dbc.NavLink(html.Img(src='assets/GITHUB_icon.png', width="18px", height="18px"), href="https://github.com/RenzoReyna88")),
                                                             
@@ -150,56 +156,65 @@ app.layout= dbc.Container([
                            ),  
                            
                           html.Br(),
-
-                          dbc.Row([                                  
-                                  dbc.Col([ 
-                                          html.H1(children=['Estudio económico en Sarmiento (Informe final)'],                                         
-                                                    style={'textAlign':'left'}),
-                                          html.Hr()
-                                         ], xs=12, md=10),
-                          ]),
-
                                 
                           dbc.Row([    
-                                  dbc.Col(children=[ 
-                                                  html.P(children=["""Este informe resume los hallazgos del estudio económico realizado en la localidad de Sarmiento, pueblo ubicado en el departamento Totoral, 
-                                                                  provincia de Córdoba. En esta investigación se analizaron las respuestas a 15 preguntas de opción múltiple choise."""],                                      
-                                                                  style={'textAlign':'left'}),
+                                  html.H1(children=['Estudio económico en Sarmiento: Análisis general sobre sus condiciones sociales'],                                         
+                                                    style={'textAlign':'left', 'color':'#0C2547'}),
+                                  html.Hr(),                                     
 
-                                                  html.P(children=[dl.Map(style={'width': '420px', 'height': '300px', 'textAlign':'center'}, center=[-30.77263581688577, -64.11194991190187], zoom=13.5, children=[
-                                                                           dl.TileLayer(id="base-layer-id"),
-                                                    # Marcador con la ubicación del centro del mapa
-                                                                   dl.Marker(position=[-30.77263581688577, -64.11194991190187], children=[
-                                                                             dl.Tooltip('Centro del Mapa'),
-                                                                             dl.Popup([
-                                                                                     html.H1("Localidad de Sarmiento, Totoral , Córdoba, Argentina"),
-                                                                                     html.P('Latitud: -30.77263581688577, Longitud: -64.11194991190187')
-                                                                             ])
-                                                                   ])
-                                                           ]),
-                                                           html.Small('La Localidad de Sarmiento cuenta con una población de 1.250 hab.', style={'fontSize':'12px'}),
-                                                           ]
-                                                                                                       
-                                                   ),
 
-                                                  html.P(children=["""En el estudio participaron 105 personas aportando una mirada critica sobre las condiciones socioeconómica en la localidad. Es inherente tener en cuenta
-                                                                  qué esta investigación permite evaluar las condiciones de la población, y aun más importante, permite identificar las necesidades de cada sector o área, 
-                                                                  mejorar la toma de decisiones, y el desarrollo e innovación de la Localidad."""],                                      
-                                                                  style={'textAlign':'left'}),
+                                  html.P(children=["""Este informe resume los hallazgos del estudio económico realizado en la localidad de Sarmiento, pueblo ubicado en el departamento 
+                                                   Totoral, provincia de Córdoba."""],                                      
+                                                  style={'textAlign':'left'}),
 
-                                                  html.Br(),
-                                  ], xs=12, md=12),                             
+                                  dbc.Col([], lg=3, md=3),
+
+                                  dbc.Col(className="d-flex justify-content-center", children=[ 
+                                                  dl.Map(center=[-30.77263581688577, -64.11194991190187], style={'width':'600px', 'height':'300px', 'textAlign':'center',  'border': '3px'}, zoom=13, children=[
+                                                            dl.TileLayer(id="base-layer-id"),
+                                                            dl.Marker(position=[-30.77263581688577, -64.11194991190187], children=[
+                                                                                                                                  dl.Tooltip('Localidad de Sarmiento'),
+                                                                                                                                  dl.Popup([
+                                                                                                                                           html.H1("Localidad de Sarmiento, Totoral , Córdoba, Argentina"),
+                                                                                                                                           html.P('Latitud: -30.77263581688577, Longitud: -64.11194991190187')
+                                                                                                                                  ])
+                                                            ]),
+
+                                                            dl.LayersControl(
+                                                                            [dl.BaseLayer(dl.TileLayer(url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"), name='Mapa de Calles'),
+                                                                            dl.BaseLayer(dl.TileLayer(url="https://tiles.wmflabs.org/bw-mapnik/{z}/{x}/{y}.png"), name='Mapa en Blanco y Negro'),
+                                                                            dl.BaseLayer(dl.TileLayer(url="https://tiles.wmflabs.org/hikebike/{z}/{x}/{y}.png"), name='Mapa de Ciclismo'),
+                                                                            dl.BaseLayer(dl.TileLayer(url="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"), name='Imágenes Satelitales')]
+                                                            )
+                                                   ]),
+
+                                                                                                     
+                                  ], lg=6, md=6),
+
+                                  dbc.Col([], lg=3, md=3),
+                                  html.Div(children=[html.P('''* Sarmiento es un pueblo ubicando al norte de la provincia de Córdoba. 
+                                                            Su población ronda los 1.250 hab. Aproximadamente.''')
+                                  ], style={'fontSize':'9px','textAlign':'center', 'marginTop':'18px',}),
+
+
+                                  html.Br(),
+
+                                  html.P(children=["""En la investigación se analizaron las respuestas a 15 preguntas de opción múltiple choise. En el estudio participaron 105 personas 
+                                                   aportando una mirada critica sobre las condiciones socioeconómica en la localidad. Es importante comprender, qué este tipo de investigación permite 
+                                                   evaluar las condiciones de la población e identificar las necesidades de cada sector o área. Con lo cuál, esto permite abordar los problemas con mayor
+                                                   precisión, optimizar la asignación de los recursos, mejorar la toma de decisiones y contribuír al desarrollo y la innovación."""],                                      
+                                         style={'textAlign':'left'}),
                           ]),
 
                           html.Br(), 
 
                           dbc.Row([
                                   dbc.Col([
-                                          html.H5(children='Analizando algunas variables de la investigación:'),
+                                          html.H3(children='Analizando variables de la investigación:', style={'color':'#0C2547'}),
                                           html.Ul(children=[
                                                            html.Ol(children=[
                                                                            '''1. la edad de Los participantes se concentró entre 24 y 45 años (67%). 
-                                                                   Los menores de 24 años y mayores de 60 años son los grupos menor participación (24%).'''
+                                                                   Los menores de 24 años y mayores de 60 años son los grupos de menor participación (24%).'''
                                                            ]),
                                                            html.Ol(children=[
                                                                            '''2. En cuánto a profesión Predominó el trabajo independiente (38%). Le siguen "Empleado" (27%) 
@@ -234,81 +249,108 @@ app.layout= dbc.Container([
                                                                    recursos que garanticen el crecimeinto.'''                                                                                          
                                                            ])
                                           ]),
-                                  ], xs=12, md=12),
-                          ]),                            
+                                  ], xl=12, md=12),
+                          ]),     
 
-                            html.Br(),
+                          html.Br(),
 
                           dbc.Row([
-                                  html.H2(children=['¡Ahora vamos a los Gráficos!'],                                         
-                                                style={'textAlign':'center'}), 
+                                  html.H4(children=['¡Ahora vamos a los Gráficos!'],                                         
+                                                style={'textAlign':'center', 'color':'#0C2547'}),
+
+                                  dbc.Col([
+                                  ], lg=1, md=1),               
                                  
                                   dbc.Col([
                                           dcc.Graph(id='rango_edades-graph', figure=fig_edades), 
-                                          html.P(children=['''*En la imagen anterior se puede se puedo observar que la edad de Los participantes se concentró entre los 24 y 45 años (67%). 
-                                                           Los menores de 24 años y mayores de 60 años son los grupos menor participación (24%).'''], 
+                                          html.P(children=['''*En la imagen anterior se puede observar que la edad de Los participantes se concentró entre los 24 y 45 años. 
+                                                           Los participantes entre 45 y 55 años, junto a los mayores de 60 años. Son los grupo de menor participación.'''], 
                                                         style={'fontSize':'12px'})                   
-                                  ],xs=12, md=12)
+                                  ], lg=10, md=10),
+
+                                  dbc.Col([
+                                  ], lg=1, md=1)
                           ]),
 
                           html.Br(),
 
                           dbc.Row([
                                   dbc.Col([
+                                  ], lg=1, md=1),
+
+                                  dbc.Col([
                                           dcc.Graph(id='sueldo_aprox-graph', figure=fig_sueldo_aprox),   
-                                          html.P(children=['''* El gráfico anterior ilustra el salario promedio de los participantes. Se observa que la mayoría de los ingresos mensuales 
+                                          html.P(children=['''* El gráfico anterior ilustra la distribución del salario de los participantes. Se observa que la mayoría de los ingresos mensuales 
                                                            se concentran entre $30.000 y $400.000, representando al (54%) de los participantes. Por otro lado, un (12%) de los participantes 
-                                                           gana entre $12.000 y $30.000, Y un (35%) no reporta ingresos mensuales. Este análisis se 
-                                                           presenta en un gráfico de barras, proporcionando una visualización clara y comprensible de la distribución de los salarios.'''], 
+                                                           gana entre $10.000 y $30.000, Y un (35%) no reporta ingresos mensuales.'''], 
                                                         style={'fontSize':'12px'})                                    
-                                  ], xs=12, md=12)
+                                  ], lg=10, md=10),
+
+                                  dbc.Col([
+                                  ], lg=1, md=1),
                           ]),
 
                           html.Br(),
 
-                          dbc.Row([                              
+                          dbc.Row([   
+                                  dbc.Col([
+                                  ], lg=1, md=1),
+
                                   dbc.Col([
                                           dcc.Graph(id='int_social-graph', figure=fig_int_soc),
                                           html.P(children=['''* El gráfico presentado ilustra las respuestas a la pregunta: ‘Si fueras un representante público, ¿qué acción tomarías?’. 
                                                            Se observa una tendencia marcada hacia la opción ‘Haría todo lo anterior’, que engloba todas las alternativas excepto 
                                                            Dejaría todo como está’. Esta última opción fue seleccionada por un solo participante.'''], 
                                                     style={'fontSize':'12px'}) 
-                                  ],xs=12, md=12)
+                                  ], lg=10, md=10),
+
+                                  dbc.Col([
+                                  ], lg=1, md=1)
                           ]),      
 
                           html.Br(),
 
                           dbc.Row([
-                              
+                                  dbc.Col([
+                                  ], lg=1, md=1),
+
                                   dbc.Col([
                                           dcc.Graph(id='profesion_niv_estudios-graph', figure=fig_estudios),
-                                          html.P(children=['''* El gráfico anterior muestra la distribución de las variables ‘Profesión’ y ‘Nivel de Estudio’. 
+                                          html.P(children=['''* El gráfico anterior muestra la distribución de las variables ‘Profesión vs Nivel de Estudio’. 
                                                            Se puede observar un patrón en el que la mayoría de las actividades laborales están ocupadas por 
-                                                           personas que han completado sus estudios primarios y secundarios. Este patrón sugiere una correlación 
-                                                           entre el nivel de educación y el tipo de profesión. Esta información proporciona una comprensión sólida de 
-                                                           cómo la educación y la profesión están interrelacionadas en este conjunto de datos.'''], 
+                                                           personas que han completado sus estudios primarios y secundarios. Esta información proporciona una comprensión sólida de 
+                                                           cómo la educación y la profesión están interrelacionadas, además de la importancia de la educación para el desempeño profesional.'''], 
                                                         style={'fontSize':'12px'}) 
-                                  ], xs=12, md=12),    
+                                  ], lg=10, md=10),
+
+                                  dbc.Col([
+                                  ], lg=1, md=1)   
 
                           ]),
 
                           html.Br(),
 
                           dbc.Row([
+                                  dbc.Col([
+                                  ], lg=1, md=1),
+
                                    dbc.Col([
                                            dcc.Graph(id='corr_variables-graph', figure=fig_corr_variables),
                                            html.P(children=['''* El mapa de calor presentado anteriormente ilustra la correlación entre los valores asociados a las respuestas de cada 
                                                                pregunta formulada en el estudio económico. Un color más intenso denota una correlación más fuerte, mientras que una disminución 
                                                                en la intensidad del color sugiere una ausencia de relación entre las variables en cuestión. Este patrón de colores facilita la 
                                                                interpretación de las interacciones entre las variables estudiadas.'''], style={'fontSize':'12px'})                                           
-                                           ], xs=12, md=12)            
+                                   ], lg=10, md=10),
+
+                                   dbc.Col([
+                                   ], lg=1, md=1)     
                           ]),
                             
                           html.Br(),
 
                           dbc.Row([
                                   dbc.Col([
-                                            html.H5('Conclusiones finales:'),
+                                            html.H5('Conclusiones finales:', style={'color':'#0C2547'}),
                                                                     
                                             html.P(children=['''Entre los participantes del estudio, una población joven y dinámica se enfrenta a desafíos y oportunidades. 
                                                     Su nivel educativo, aunque moderado, refleja un deseo de crecimiento y superación. Sin embargo, la realidad económica no 
@@ -323,7 +365,7 @@ app.layout= dbc.Container([
                                                     Sin embargo, no todo es perfecto. La atención médica local necesita mejoras, y la juventud busca oportunidades para crecer y prosperar. 
                                                     En este equilibrio entre desafíos y esperanzas, se mantiene una mirada optimista hacia el futuro.'''
                                             ]),
-                                  ], width=12)
+                                  ], xl=12, md=12)
                           ]),
 
                           html.Br(),
@@ -334,34 +376,33 @@ app.layout= dbc.Container([
                                   dbc.Col([
                                           html.Br(),
                                           html.Img(src=app.get_asset_url('Desarrolllador-Sarmientino.jpg'), 
-                                                    style={'height': '150px', 'width': 'auto', 'display': 'block', 'margin': '0 auto'}),
+                                                    style={'height': '170px', 'width': 'auto', 'borderRadius':'9px', 'display': 'block', 'margin': '0 auto'}),
 
                                           html.P(children=['Data analyst / Python developer'], 
                                                     style={'font-weight': 'bold', 'textAlign':'center', 'fontSize': '9px'})
-                                  ], xs=4, sm=3),
+                                  ], lg=4, md=4),
 
                                   dbc.Col([
                                           html.Div([
-                                                   html.P(children=['''Mi nombre es Renzo Reyna. Me considero un autodidacta y entusista por el conocimiento 
-                                                                       tecnológico y la ciencia de datos.'''
-                                                   ], style={'font-weight': 'bold', 'margin-top': '20px', 'textAlign':'start'}),
+                                                   html.P(children=['''Mi nombre es Renzo. Soy nativo de una pequeña localidad al norte de la Provincia de Córdoba llamada Sarmiento. Me considero 
+                                                                    un autodidacta y entusista por el conocimiento tecnológico y la ciencia de datos.''']),
 
-                                                   html.P(children=['''Hace seis años, emprendí un camino de autoaprendizaje en economía, comportamiento del mercado e integración 
+                                                   html.P(children=['''Hace seis años, emprendí un camino de autoaprendizaje en economía, comportamiento de los mercados e integración 
                                                                     de la tecnología en el ámbito social. Durante el último año y medio, me adentré en el mundo de la programación 
-                                                                    Python y el análisis de datos. Desde entonces, he fusionado mis conocimientos y habilidades adquiridas durante 
+                                                                    Python y el Análisis de Datos. Desde entonces, he fusionado mis conocimientos y habilidades adquiridas durante 
                                                                     este tiempo, dedicándome a comprender en profundidad cómo estas tecnologías pueden generar beneficios económicos 
-                                                                    y sociales al aplicarlas a nuestras actividades cotidianas, con el objetivo de mejorar nuestro entorno laboral y 
-                                                                    cada proceso que llevamos a cabo en la vida diaria.''']),
+                                                                    y sociales al aplicarlas a nuestras actividades, con el objetivo de mejorar nuestro entorno laboral y 
+                                                                    cada proceso que llevamos a cabo a partir de la toma de decisiones.''']),
 
-                                                   html.H6(children=["¡", html.A('Trabajemos Juntos!', href='https://www.desarrolladorsarmientino.com/perfil', style={'textDecoration':'none', 'color':'#0C2547'}),"!"])                                                                                                                
-                                          ]),
-                                  ], xs=8, sm=7)
+                                                   html.H6(children=["¡", html.A('Trabajemos Juntos', href='https://www.desarrolladorsarmientino.com/perfil', style={'textDecoration':'none', 'font-weight': 'bold', 'color':'#0C2547'}),"!"])                                                                                                                
+                                          ], style={'font-weight': 'bold', 'margin-top': '20px', 'textAlign':'start', 'fontSize':'14px'}),
+                                  ], lg=8, md=8)
                           ]),
 
                           html.Br(),
 
                           dbc.Row([
-                                dbc.Col([], xs=4, md=3),
+                                dbc.Col([], lg=4, md=4),
                                   dbc.Col([
                                           html.Div([
                                                    dbc.Button("Contacto", id="collapse-button", className="mb-3", n_clicks=0, style={'backgroundColor':'#0C2547'}),
@@ -371,32 +412,101 @@ app.layout= dbc.Container([
                                                                dbc.Card(children=[
                                                                                  dbc.CardHeader(html.H6("Información personal:"), style={"backgroundColor":"#0C2547", "color":"white"}),
                                                                                  dbc.CardBody(children=[
-                                                                                                       html.P("+54 3525-620842", className="Card-cel"),
+                                                                                                       html.P("TEL: +54 3525-620842", className="Card-cel"),
                                                                                                        html.P("desarrollador.sarmientino@gmail.com", className="mail-one"),
                                                                                                        html.P("DS.techsolutions@outlook.com", className="mail-two"),
                                                                                                        html.P("Independencia s/n - Sarmiento, Córdoba, Argentina.", className="direc"),
-                                                                                 ], style= {"fontSize":"9px"})
+                                                                                                       html.A('www.desarrolladorsarmientino.com', href='https://www.desarrolladorsarmientino.com/perfil')
+                                                                                 ], style= {"fontSize":"15px"})
 
-                                                               ], style={"width":"270px"}),id="horizontal-collapse",
+                                                               ], style={"width":"300px"}),id="horizontal-collapse",
                                                                    is_open=False,
                                                                    dimension="width"
                                                    )
                                       ], style={"minHeight": "90px"})  
-                                  ], xs=6, md=6),
-
-                                  dbc.Col([], xs=2, md=2)
+                                  ], lg=8, md=8),
 
                           ]),
 
-                          html.Footer(
+                          html.Footer(                                     
                                      html.Div([
-                                              html.P(children=['© Todos los derechos reservados. ', html.A('Desarrollador Sarmientino', href='https://www.desarrolladorsarmientino.com', style={'textDecoration':'none', 'color':'#0C2547'}), ' 2023 - 2024.']),
+                                              html.Div(className="d-flex justify-content-center", children=[
+                                                                                                           html.Div(className="col-sm-4"),
+
+                                                                                                           html.Div(className="col-sm-4", 
+                                                                                                                    children=[
+                                                                                                                             html.P("Redes sociales:", className="text-center", 
+                                                                                                                                     style={"font-family": "'Lato', sans-serif;"}),
+                                                                                                                             html.Div(className="d-flex justify-content-center", children=[
+                                                                                                                                                                                          html.Div(className="col-sm-1 text-center me-3", children=[
+                                                                                                                                                                                                                                                   html.A(href="https://www.facebook.com/renzoreyna.88/", target="_blank", 
+                                                                                                                                                                                                                                                          rel="noopener noreferrer", children=[
+                                                                                                                                                                                                                                                                                              html.Img(src="assets/facebook-logo.png", width="24", 
+                                                                                                                                                                                                                                                                                              height="24")
+                                                                                                                                                                                                                                                   ])
+                                                                                                                                                                                           ]),
+
+                                                                                                                                                                                           html.Div(className="col-sm-1 text-center me-3", children=[
+                                                                                                                                                                                                                                                    html.A(href="https://substack.com/@renzoreyna", target="_blank", 
+                                                                                                                                                                                                                                                           rel="noopener noreferrer", children=[
+                                                                                                                                                                                                                                                                                               html.Img(src="assets/substack-logo.png", width="24", 
+                                                                                                                                                                                                                                                                                               height="21", 
+                                                                                                                                                                                                                                                                                               style={"text-decoration": "none", "color": "rgb(196, 79, 16)"})
+                                                                                                                                                                                                                                                    ])
+                                                                                                                                                                                           ]),
+
+                                                                                                                                                                                           html.Div(className="col-sm-1 text-center me-3", children=[
+                                                                                                                                                                                                                                                    html.A(href="https://github.com/RenzoReyna88", target="_blank", 
+                                                                                                                                                                                                                                                           rel="noopener noreferrer", children=[
+                                                                                                                                                                                                                                                                                               html.Img(src="assets/github-logo.png", width="24", 
+                                                                                                                                                                                                                                                                                               height="24", 
+                                                                                                                                                                                                                                                                                               style={"text-decoration": "none", "color": "rgb(0, 0, 0)"})
+                                                                                                                                                                                                                                                    ])
+                                                                                                                                                                                           ]),
+
+                                                                                                                                                                                           html.Div(className="col-sm-1 text-center me-3", children=[
+                                                                                                                                                                                                                                                    html.A(href="https://www.instagram.com/reynarenzo88/", target="_blank", 
+                                                                                                                                                                                                                                                           rel="noopener noreferrer", children=[
+                                                                                                                                                                                                                                                                                               html.Img(src="assets/instagram-logo.png", width="24", 
+                                                                                                                                                                                                                                                                                               height="24", 
+                                                                                                                                                                                                                                                                                               style={"text-decoration": "none", "color": "rgb(196, 16, 22)"})
+                                                                                                                                                                                                                                                    ])
+                                                                                                                                                                                           ]),
+
+                                                                                                                                                                                           html.Div(className="col-sm-1 text-center me-3", children=[
+                                                                                                                                                                                                                                                    html.A(href="https://twitter.com/Reynarenzo88", target="_blank", 
+                                                                                                                                                                                                                                                           rel="noopener noreferrer", children=[
+                                                                                                                                                                                                                                                                                               html.Img(src="assets/twitter-logo.png", width="30", 
+                                                                                                                                                                                                                                                                                               height="24", 
+                                                                                                                                                                                                                                                                                               style={"text-decoration": "none", "color": "rgb(39, 39, 39)"})
+                                                                                                                                                                                                                                                    ])
+                                                                                                                                                                                           ]),
+
+                                                                                                                                                                                           html.Div(className="col-sm-1 text-center me-3", children=[
+                                                                                                                                                                                                                                                    html.A(href="https://www.linkedin.com/in/renzo-reyna/", target="_blank", 
+                                                                                                                                                                                                                                                           rel="noopener noreferrer", children=[
+                                                                                                                                                                                                                                                                                               html.Img(src="assets/linkedIn-logo.png", width="24", 
+                                                                                                                                                                                                                                                                                               height="24")
+                                                                                                                                                                                                                                                    ])
+                                                                                                                                                                                           ]),
+                                                                                                                             ]),
+                                                                                                           ]),
+
+                                                                                                           html.Div(className="col-sm-4"),
+                                               ]),
+
+                                     html.Br(),          
+
+                                     html.P(children=['© Todos los derechos reservados - ', html.A('desarrolladorsarmientino.com', href='https://www.desarrolladorsarmientino.com', style={'textDecoration':'none', 'font-weight': 'bold', 'color':'#0C2547'}), ' 2023 - 2024.']),
+
                                      ], style={'textAlign': 'center', 'padding': '18px', 'color':'black', 
-                                               'fontSize':'18px'},
+                                               'fontSize':'15px'},
 
                                      )
                           ),
 
+                          html.Br(),
+                          html.Br(),
                           html.Br()                            
             ])
 
