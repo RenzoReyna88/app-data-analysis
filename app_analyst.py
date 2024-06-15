@@ -50,7 +50,7 @@ fig_edades.update_layout(title=dict(text='Participantes según su edad', y=0.92)
 # Figura n° 2 gráfico de barras
 
 fig_sueldo_aprox = px.bar(resp_sueldo, x=resp_sueldo['Respuestas'], y=resp_sueldo['Respuesta sobre el sueldo'], 
-                          color='Respuesta sobre el sueldo', text_auto=True
+                          color='Respuestas', text_auto=True
                          )
 
 fig_sueldo_aprox.update_traces(texttemplate='%{x:.0f}%')
@@ -93,6 +93,7 @@ fig_int_soc.update_layout(title_text="Intención social cómo representante púb
 
 # Figura n° 4 gráfico de dispersión
 fig_estudios = px.scatter(ddf, x=ddf['Nivel de estudios'], y=ddf['Profesión'], color='Nivel de estudios',
+                           size=[1]*len(ddf)
                           )
 fig_estudios.update_layout(title=dict(text='Profesión vs nivel de Estudios', y=0.92),
                            plot_bgcolor='#0C2547',
@@ -206,9 +207,68 @@ app.layout= dbc.Container([
                                          style={'textAlign':'left'}),
                           ]),
 
-                          html.Br(), 
+                          html.Br(),
 
                           dbc.Row([
+                                  html.H4(children=['¡Vamos a los Gráficos!'],                                         
+                                                style={'textAlign':'center', 'color':'#0C2547'}),
+
+                                  dbc.Col([
+                                  ], lg=1, md=1),               
+                                 
+                                  dbc.Col([
+                                          dcc.Graph(id='rango_edades-graph', figure=fig_edades), 
+                                          html.P(children=['''*En la imagen anterior se puede observar que la edad de Los participantes se concentró entre los 24 y 45 años. 
+                                                           Los participantes entre 45 y 55 años, junto a los mayores de 60 años. Son los grupo de menor participación.'''], 
+                                                        style={'fontSize':'12px'})                   
+                                  ], lg=10, md=10),
+
+                                  dbc.Col([
+                                  ], lg=1, md=1)
+                          ]),     
+
+                          html.Br(),
+
+                          dbc.Row([
+                                  dbc.Col([
+                                  ], lg=1, md=1),
+
+                                  dbc.Col([
+                                          dcc.Graph(id='sueldo_aprox-graph', figure=fig_sueldo_aprox),   
+                                          html.P(children=['''* El gráfico anterior ilustra la distribución del salario de los participantes. Se observa que la mayoría de los ingresos mensuales 
+                                                           se concentran entre $30.000 y $400.000, representando al (54%) de los participantes. Por otro lado, un (12%) de los participantes 
+                                                           gana entre $10.000 y $30.000, Y un (35%) no reporta ingresos mensuales.'''], 
+                                                        style={'fontSize':'12px'})                                    
+                                  ], lg=10, md=10),
+
+                                  dbc.Col([
+                                  ], lg=1, md=1),
+                          ]),
+
+                          html.Br(),
+
+                          dbc.Row([   
+                                  dbc.Col([
+                                  ], lg=1, md=1),
+
+                                  dbc.Col([
+                                          dcc.Graph(id='int_social-graph', figure=fig_int_soc),
+                                          html.P(children=['''* El gráfico presentado ilustra las respuestas a la pregunta: ‘Si fueras un representante público, ¿qué acción tomarías?’. 
+                                                           Se observa una tendencia marcada hacia la opción ‘Haría todo lo anterior’, que engloba todas las alternativas excepto 
+                                                           Dejaría todo como está’. Esta última opción fue seleccionada por un solo participante.'''], 
+                                                    style={'fontSize':'12px'}) 
+                                  ], lg=10, md=10),
+
+                                  dbc.Col([
+                                  ], lg=1, md=1)
+                          ]),      
+
+                          html.Br(),
+
+                          dbc.Row([
+                                  dbc.Col([
+                                      ], lg=1, md=1),
+
                                   dbc.Col([
                                           html.H3(children='Analizando variables de la investigación:', style={'color':'#0C2547'}),
                                           html.Ul(children=[
@@ -246,67 +306,14 @@ app.layout= dbc.Container([
                                                            ]),
                                                            html.Ol(children=[
                                                                            '''9. El (78%) considera "Muy probable" seguir viviendo en Sarmiento aun sin contar con mayores
-                                                                   recursos que garanticen el crecimeinto.'''                                                                                          
+                                                                   recursos que garanticen el crecimiento.'''                                                                                          
                                                            ])
                                           ]),
-                                  ], xl=12, md=12),
-                          ]),     
-
-                          html.Br(),
-
-                          dbc.Row([
-                                  html.H4(children=['¡Ahora vamos a los Gráficos!'],                                         
-                                                style={'textAlign':'center', 'color':'#0C2547'}),
-
-                                  dbc.Col([
-                                  ], lg=1, md=1),               
-                                 
-                                  dbc.Col([
-                                          dcc.Graph(id='rango_edades-graph', figure=fig_edades), 
-                                          html.P(children=['''*En la imagen anterior se puede observar que la edad de Los participantes se concentró entre los 24 y 45 años. 
-                                                           Los participantes entre 45 y 55 años, junto a los mayores de 60 años. Son los grupo de menor participación.'''], 
-                                                        style={'fontSize':'12px'})                   
-                                  ], lg=10, md=10),
-
-                                  dbc.Col([
-                                  ], lg=1, md=1)
-                          ]),
-
-                          html.Br(),
-
-                          dbc.Row([
-                                  dbc.Col([
-                                  ], lg=1, md=1),
-
-                                  dbc.Col([
-                                          dcc.Graph(id='sueldo_aprox-graph', figure=fig_sueldo_aprox),   
-                                          html.P(children=['''* El gráfico anterior ilustra la distribución del salario de los participantes. Se observa que la mayoría de los ingresos mensuales 
-                                                           se concentran entre $30.000 y $400.000, representando al (54%) de los participantes. Por otro lado, un (12%) de los participantes 
-                                                           gana entre $10.000 y $30.000, Y un (35%) no reporta ingresos mensuales.'''], 
-                                                        style={'fontSize':'12px'})                                    
-                                  ], lg=10, md=10),
+                                  ], lg=10, md=9),
 
                                   dbc.Col([
                                   ], lg=1, md=1),
                           ]),
-
-                          html.Br(),
-
-                          dbc.Row([   
-                                  dbc.Col([
-                                  ], lg=1, md=1),
-
-                                  dbc.Col([
-                                          dcc.Graph(id='int_social-graph', figure=fig_int_soc),
-                                          html.P(children=['''* El gráfico presentado ilustra las respuestas a la pregunta: ‘Si fueras un representante público, ¿qué acción tomarías?’. 
-                                                           Se observa una tendencia marcada hacia la opción ‘Haría todo lo anterior’, que engloba todas las alternativas excepto 
-                                                           Dejaría todo como está’. Esta última opción fue seleccionada por un solo participante.'''], 
-                                                    style={'fontSize':'12px'}) 
-                                  ], lg=10, md=10),
-
-                                  dbc.Col([
-                                  ], lg=1, md=1)
-                          ]),      
 
                           html.Br(),
 
@@ -349,6 +356,8 @@ app.layout= dbc.Container([
                           html.Br(),
 
                           dbc.Row([
+                                  dbc.Col([], lg=1, md=1),
+
                                   dbc.Col([
                                             html.H5('Conclusiones finales:', style={'color':'#0C2547'}),
                                                                     
@@ -365,7 +374,9 @@ app.layout= dbc.Container([
                                                     Sin embargo, no todo es perfecto. La atención médica local necesita mejoras, y la juventud busca oportunidades para crecer y prosperar. 
                                                     En este equilibrio entre desafíos y esperanzas, se mantiene una mirada optimista hacia el futuro.'''
                                             ]),
-                                  ], xl=12, md=12)
+                                  ], lg=10, md=10),
+
+                                  dbc.Col([], lg=1, md=1)
                           ]),
 
                           html.Br(),
