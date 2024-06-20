@@ -39,7 +39,7 @@ greenlet==3.0.3
 gunicorn==21.2.0
 gw_dsl_parser==0.1.47
 huggingface-hub==0.22.2
-idna==4.66.3
+idna==3.7
 importlib_metadata==7.1.0
 ipython==8.23.0
 ipywidgets==8.1.2
