@@ -356,6 +356,19 @@ app.layout= dbc.Container([
                           html.Br(),
 
                           dbc.Row([
+                                  dbc.Col([], lg=2, md=1),
+
+                                  dbc.Col([
+                                          html.Img(src='assets/nube_estudio_economico.png', width="400px", height="300px")
+                                  ], lg=8, md=8),
+
+                                  dbc.Col([], lg=2, md=1)
+
+                          ]),
+
+                          html.Br(),
+
+                          dbc.Row([
                                   dbc.Col([], lg=1, md=1),
 
                                   dbc.Col([
