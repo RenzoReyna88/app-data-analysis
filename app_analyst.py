@@ -408,8 +408,7 @@ app.layout= dbc.Container([
 
                                   dbc.Col([
                                           html.Div([
-                                                   html.P(children=['''Mi nombre es Renzo. Soy nativo de una pequeña localidad al norte de la Provincia de Córdoba llamada Sarmiento. Me considero 
-                                                                    un autodidacta y entusista por el conocimiento tecnológico y la ciencia de datos.''']),
+                                                   html.P(children=['''Mi nombre es Renzo. Soy nativo de la localidad de Sarmiento.''']),
 
                                                    html.P(children=['''Hace seis años, emprendí un camino de autoaprendizaje en economía, comportamiento de los mercados e integración 
                                                                     de la tecnología en el ámbito social. Durante el último año y medio, me adentré en el mundo de la programación 
